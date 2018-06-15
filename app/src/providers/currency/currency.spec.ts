@@ -35,15 +35,15 @@ describe('CurrencyProvider', () => {
     expect(currency.currencySymbol).toBe('USD');
     expect(currency.factor).toEqual(1);
 
-    currency.setCurrency('BTC');
+    currency.setCurrency('MAC');
     expect(currency.currencySymbol).toBe('MAC');
     expect(currency.factor).toEqual(1);
 
-    currency.setCurrency('mBTC');
+    currency.setCurrency('mMAC');
     expect(currency.currencySymbol).toBe('mMAC');
     expect(currency.factor).toEqual(1000);
 
-    currency.setCurrency('bits');
+    currency.setCurrency('μMAC');
     expect(currency.currencySymbol).toBe('μMAC');
     expect(currency.factor).toEqual(1000000);
   });

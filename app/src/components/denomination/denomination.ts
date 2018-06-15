@@ -23,7 +23,7 @@ export class DenominationComponent {
       'USD',
       this.currencyProvider.defaultCurrency,
       'm' + this.currencyProvider.defaultCurrency,
-      'bits'
+      'μ' + this.currencyProvider.defaultCurrency
     ];
 
     this.switcherOn = currencyProvider.explorers.length > 1;
