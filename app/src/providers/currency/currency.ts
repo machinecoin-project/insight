@@ -22,7 +22,7 @@ export class CurrencyProvider {
 
   constructor(public http: Http, private api: ApiProvider) {
     // TODO Make this an API call
-    this.defaultCurrency = 'BTC';
+    this.defaultCurrency = 'MAC';
     this.currencySymbol = this.defaultCurrency;
 
     let url: string = this.api.apiPrefix + 'explorers';
@@ -50,7 +50,7 @@ export class CurrencyProvider {
     } else if (this.currencySymbol === 'm' + this.defaultCurrency) {
       this.factor = 1000;
       response = this.roundFloat((value * this.factor), 5);
-    } else if (this.currencySymbol === 'bits') {
+    } else if (this.currencySymbol === 'μ' + this.defaultCurrency) {
       this.factor = 1000000;
       response = this.roundFloat((value * this.factor), 2);
     } else {
@@ -74,7 +74,7 @@ export class CurrencyProvider {
     } else if (this.currencySymbol === 'm' + this.defaultCurrency) {
       this.factor = 1000;
       response = this.roundFloat((value * this.factor), 5);
-    } else if (this.currencySymbol === 'bits') {
+    } else if (this.currencySymbol === 'μ' + this.defaultCurrency) {
       this.factor = 1000000;
       response = this.roundFloat((value * this.factor), 2);
     } else {
@@ -93,8 +93,8 @@ export class CurrencyProvider {
       this.http.get(this.api.apiPrefix + 'currency').subscribe(
         (data) => {
           let currencyParsed: any = JSON.parse(data['_body']);
-          if (currencyParsed.data.bitstamp) {
-            this.factor = this.bitstamp = currencyParsed.data.bitstamp;
+          if (currencyParsed.data.coinmarketcap) {
+            this.factor = this.bitstamp = currencyParsed.data.coinmarketcap;
           } else if (currencyParsed.data.kraken) {
             this.factor = this.kraken = currencyParsed.data.kraken;
           }
@@ -107,7 +107,7 @@ export class CurrencyProvider {
       );
     } else if (currency === 'm' + this.defaultCurrency) {
       this.factor = 1000;
-    } else if (currency === 'bits') {
+    } else if (currency === 'μ' + this.defaultCurrency) {
       this.factor = 1000000;
     } else {
       this.factor = 1;
